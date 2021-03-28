@@ -1,6 +1,9 @@
 // import the link component from nextjs
 import Link from "next/link";
 
+// import the css module to this especif component, the only required is to have .module.css at the end of the css, then you can access the classes on css by accessing the name of the class.
+import classes from "./event-item.module.css";
+
 function EventItem(props) {
   // object destructuring to pull out the data from props
   const { title, image, date, location, id } = props;
@@ -15,19 +18,19 @@ function EventItem(props) {
   const exploreLink = `/events/${id}`;
 
   return (
-    <li>
+    <li className={classes.item}>
       <img src={"/" + image} alt={title} />
-      <div>
-        <div>
+      <div className={classes.content}>
+        <div className={classes.summary}>
           <h2>{title}</h2>
-          <div>
+          <div className={classes.date}>
             <time>{humanReadableDate}</time>
           </div>
-          <div>
+          <div className={classes.address}>
             <address> {formattedAddress} </address>
           </div>
         </div>
-        <div>
+        <div className={classes.actions}>
           <Link href={exploreLink}> Explore Event </Link>
         </div>
       </div>
